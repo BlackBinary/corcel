@@ -15,6 +15,21 @@ use Corcel\Model\Meta\TermMeta;
 class Taxonomy extends Model
 {
     /**
+     * @var array
+     */
+    protected $attributes = [
+        'description' => ''
+    ];
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'taxonomy',
+        'description'
+    ];
+
+    /**
      * @var string
      */
     protected $table = 'term_taxonomy';

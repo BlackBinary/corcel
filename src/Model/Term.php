@@ -17,6 +17,25 @@ class Term extends Model
     use MetaFields;
     use AdvancedCustomFields;
 
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($item) {
+            $slug = strtolower(str_replace(' ', '-', $item->name));
+            $item->slug = $slug;
+        });
+    }
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'slug'
+    ];
+
     /**
      * @var string
      */
