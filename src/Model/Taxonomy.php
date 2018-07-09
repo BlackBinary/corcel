@@ -14,12 +14,16 @@ use Corcel\Model\Meta\TermMeta;
  */
 class Taxonomy extends Model
 {
-    /**
-     * @var array
-     */
-    protected $attributes = [
-        'description' => ''
-    ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        //while creating/inserting item into db
+        static::creating(function ($item) {
+            $item->description = $item->description ?? '';
+        });
+    }
 
     /**
      * @var array
