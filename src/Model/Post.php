@@ -403,6 +403,19 @@ class Post extends Model
     }
 
     /**
+     * Check if the slug already exists
+     *
+     * @param $slug
+     * @return bool
+     */
+    public function isDuplicateSlug($slug) {
+        $exists = self::where('post_name', $slug)
+            ->count();
+
+        return $exists ? true : false;
+    }
+
+    /**
      * @param string $key
      * @return mixed
      */
