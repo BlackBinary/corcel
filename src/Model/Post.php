@@ -408,7 +408,7 @@ class Post extends Model
      * @param $slug
      * @return bool
      */
-    public function isDuplicateSlug($slug) {
+    public static function isDuplicateSlug($slug) {
         $exists = self::where('post_name', $slug)
             ->count();
 
